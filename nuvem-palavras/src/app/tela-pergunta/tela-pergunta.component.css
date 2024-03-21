@@ -1,0 +1,119 @@
+.tablet-horizontal {
+    background-color: #011e38;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .tablet-horizontal .div {
+    background-color: #011e38;
+    overflow: hidden;
+    width: 1440px;
+    height: 960px;
+    position: relative;
+  }
+  
+  .tablet-horizontal .overlap {
+    position: absolute;
+    width: 1050px;
+    height: 228px;
+    top: 127px;
+    left: 220px;
+  }
+  
+  .tablet-horizontal .text-wrapper {
+    font-family: "IBM Plex Sans-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 85px;
+    margin-top: 0;
+  }
+  
+  .tablet-horizontal .rectangle {
+    position: absolute;
+    width: 682px;
+    height: 7px;
+    top: 221px;
+    left: 0;
+    background-color: #2750e9;
+  }
+  
+  .tablet-horizontal .overlap-group {
+    position: absolute;
+    top: 409px;
+    left: 220px;
+  }
+  
+  .tablet-horizontal .text-wrapper-2 {
+    font-family: "IBM Plex Sans-Italic", Helvetica;
+    font-weight: 400;
+    font-style: italic;
+    color: #7e7070;
+    background-color: #f5f1eb;
+    border-radius: 10px;
+    font-size: 22px;
+    padding: 10px;
+  }
+  
+  .tablet-horizontal .frame {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 60px;
+    position: absolute;
+    top: 679px;
+    left: 1013px;
+    background-color: #264fec;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .tablet-horizontal .text-wrapper-3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "IBM Plex Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .tablet-horizontal .elementos-LIDERA {
+    position: absolute;
+    width: 240px;
+    height: 246px;
+    top: 679px;
+    left: 61px;
+    object-fit: cover;
+  }
+  
+  .tablet-horizontal .overlap-group-2 {
+    position: absolute;
+    width: 217px;
+    height: 277px;
+    top: -80px;
+    left: 1287px;
+  }
+  
+  .tablet-horizontal .ellipse {
+    position: absolute;
+    width: 217px;
+    height: 217px;
+    top: 0;
+    left: 0;
+    background-color: #264fec;
+    border-radius: 108.5px;
+  }
+  
+  .tablet-horizontal .branco {
+    position: absolute;
+    width: 137px;
+    height: 187px;
+    top: 90px;
+    left: 16px;
+    object-fit: cover;
+  }

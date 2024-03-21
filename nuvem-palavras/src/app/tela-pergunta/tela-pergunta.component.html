@@ -1,1 +1,21 @@
-<p>tela-pergunta works!</p>
+<div class="tablet-horizontal">
+    <div class="div">
+        <div class="overlap">
+            <p class="text-wrapper">Qual o seu maior desafio no GB para 2024?</p>
+            <div class="rectangle"></div>
+        </div>
+        <div class="overlap-group">
+            <form [formGroup]="formulario">
+                <textarea rows="8" cols="87" formControlName="resposta" class="text-wrapper-2" placeholder="Digite aqui sua mensagem"></textarea>
+            </form>
+        </div>
+        <div class="frame" (click)="enviar()">
+            <div class="text-wrapper-3">Enviar</div>
+        </div>
+        <img class="elementos-LIDERA" src="img/elementos-LIDERA-2024-v2-13.png" />
+        <div class="overlap-group-2">
+        <div class="ellipse"></div>
+        <img class="branco" src="img/branco-1.png" />
+        </div>
+    </div>
+</div>

@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { TelaPalavrasComponent } from './tela-palavras/tela-palavras.component';
 import { TelaPerguntaComponent } from './tela-pergunta/tela-pergunta.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,14 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DataService 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
