@@ -20,32 +20,29 @@
     flex-wrap: wrap; 
     justify-content: space-evenly; 
     align-items: center;
-    align-content: flex-end;
+    align-content: center;
   }
 
-  .painel-horizontal .mensagem {
+  .painel-horizontal .mensagem.medium {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    font-family: "IBM Plex Sans-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 35px;
+  }
+  
+  .painel-horizontal .mensagem.small {
+    padding: 10px;
     font-family: "IBM Plex Sans-Bold", Helvetica;
     font-weight: 700;
     color: #ffffff;
     font-size: 50px;
   }
   
-  .painel-horizontal .mensagem.small {
+  .painel-horizontal .mensagem.large {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
     font-family: "IBM Plex Sans-Bold", Helvetica;
     font-weight: 700;
     color: #ffffff;
     font-size: 20px;
-  }
-  
-  .painel-horizontal .mensagem.large {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    font-family: "IBM Plex Sans-Bold", Helvetica;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 60px;
   }

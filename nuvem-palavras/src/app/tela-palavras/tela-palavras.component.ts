@@ -22,6 +22,15 @@ export class TelaPalavrasComponent {
   }
 
   getTamanhoClasse(mensagem: string): string {
-    return mensagem.length < 13 ? 'small' : 'large'; // Define a classe com base no tamanho da mensagem
+    if (mensagem.length <= 10) 
+      return 'small'
+   
+    if (mensagem.length <= 20) 
+      return 'medium'
+
+    if (mensagem.length > 20)
+      return 'large'
+
+    return 'medium'
   }
 }

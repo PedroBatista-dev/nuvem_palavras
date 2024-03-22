@@ -17,9 +17,17 @@ export class DataService {
   getMensagem(): Observable<string> {
     return timer(0, 1000).pipe(
       map(() => {
-        // Simulando uma resposta de servidor
-        const randomNumber = Math.floor(Math.random() * 1000000);
-        return `Mensagem ${randomNumber}`;
+        // Simulando uma resposta de servidor        
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let frase = '';
+        const randomNumber = Math.floor(Math.random() * 100);
+
+        for (let i = 0; i < randomNumber; i++) {
+          const randomIndex = Math.floor(Math.random() * caracteres.length);
+          frase += caracteres.charAt(randomIndex);
+        }
+
+        return frase;
       })
     );
   }
