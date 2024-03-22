@@ -1,1 +1,9 @@
-<p>tela-palavras works!</p>
+<div class="painel-horizontal">
+    <div class="div">
+        <div class="mensagem-container">
+            <div *ngFor="let mensagem of mensagens" class="mensagem" [ngClass]="getTamanhoClasse(mensagem)">
+              {{ mensagem }}
+            </div>
+        </div>
+    </div>
+</div>
