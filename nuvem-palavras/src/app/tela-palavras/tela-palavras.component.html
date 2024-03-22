@@ -1,7 +1,7 @@
 <div class="painel-horizontal">
     <div class="div">
         <div class="mensagem-container">
-            <div *ngFor="let mensagem of mensagens" class="mensagem" [ngClass]="getTamanhoClasse(mensagem)">
+            <div *ngFor="let mensagem of mensagens" [ngClass]="getTamanhoClasse(mensagem)">
               {{ mensagem }}
             </div>
         </div>

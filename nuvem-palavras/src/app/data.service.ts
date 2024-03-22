@@ -20,7 +20,7 @@ export class DataService {
         // Simulando uma resposta de servidor        
         const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let frase = '';
-        const randomNumber = Math.floor(Math.random() * 100);
+        const randomNumber = Math.floor(Math.random() * 50);
 
         for (let i = 0; i < randomNumber; i++) {
           const randomIndex = Math.floor(Math.random() * caracteres.length);

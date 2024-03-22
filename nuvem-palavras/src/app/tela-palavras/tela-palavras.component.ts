@@ -23,14 +23,20 @@ export class TelaPalavrasComponent {
 
   getTamanhoClasse(mensagem: string): string {
     if (mensagem.length <= 10) 
-      return 'small'
+      return 'mensagem-verysmall'
    
     if (mensagem.length <= 20) 
-      return 'medium'
+      return 'mensagem-small'
 
-    if (mensagem.length > 20)
-      return 'large'
+    if (mensagem.length <= 30)
+      return 'mensagem-medium'
+    
+    if (mensagem.length <= 40)
+      return 'mensagem-large'
+    
+    if (mensagem.length > 40)
+      return 'mensagem-verylarge'
 
-    return 'medium'
+    return 'mensagem-medium'
   }
 }
