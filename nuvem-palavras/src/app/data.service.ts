@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, timer } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, interval, timer } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +11,28 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   enviarResposta(resposta: string): Observable<any> {
-    return this.http.post<any>('URL_DA_SUA_API', { resposta });
+    return this.http.post<any>('http://189.48.177.66:3000/resposta', { Texto: resposta });
   }
 
-  getMensagem(): Observable<string> {
-    return timer(0, 1000).pipe(
-      map(() => {
-        // Simulando uma resposta de servidor        
-        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let frase = '';
-        const randomNumber = Math.floor(Math.random() * 50);
+  getMensagem(): Observable<any> {
+    return interval(2000) // 2000 milissegundos = 2 segundos
+      .pipe(
+        switchMap(() => this.http.get<any>('http://189.48.177.66:3000/respostas/novos'))
+      )
+    // return timer(0, 1000).pipe(
+    //   map(() => {
+    //     // Simulando uma resposta de servidor        
+    //     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    //     let frase = '';
+    //     const randomNumber = Math.floor(Math.random() * 50);
 
-        for (let i = 0; i < randomNumber; i++) {
-          const randomIndex = Math.floor(Math.random() * caracteres.length);
-          frase += caracteres.charAt(randomIndex);
-        }
+    //     for (let i = 0; i < randomNumber; i++) {
+    //       const randomIndex = Math.floor(Math.random() * caracteres.length);
+    //       frase += caracteres.charAt(randomIndex);
+    //     }
 
-        return frase;
-      })
-    );
+    //     return frase;
+    //   })
+    // );
   }
 }

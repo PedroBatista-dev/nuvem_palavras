@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tela-pergunta',
@@ -23,9 +24,18 @@ export class TelaPerguntaComponent {
     console.log(this.formulario.get('resposta')?.value)
     this.dataService.enviarResposta(this.formulario.get('resposta')?.value).subscribe({
       next:  (response) => {
-        alert('Sua resposta foi enviada com sucesso!');
+        this.formulario.get('resposta')!.reset();
+        Swal.fire({
+          icon: 'success',
+          title: 'Sucesso!',
+          text: 'Sua resposta foi enviada com sucesso!'
+        });
       },
-      error: err => console.error(`Erro ao enviar a resposta: ${err}`)
+      error: err => Swal.fire({
+        icon: 'error',
+        title: 'Erro!',
+        text: `Erro ao enviar a resposta: ${err}`
+      })
     });
   }
 
