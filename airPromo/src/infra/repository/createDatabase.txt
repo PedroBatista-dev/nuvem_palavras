@@ -1,0 +1,126 @@
+// Criação da base de dados que será utilizada durante o projeto. 
+// O script a seguir foi desenvolvido para ser executado em banco de Dados MySql
+// Criação do banco de dados e das tabelas de usuários e endereços utilizadas no sistema.
+
+CREATE DATABASE IF NOT EXISTS `airPromo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `Temas`
+	(
+		CodigoTema INT NOT NULL AUTO_INCREMENT PRIMARY KEY,					
+        Descricao VARCHAR(50) NOT NULL
+	);
+
+INSERT INTO `Temas` (`Descricao`) 
+	VALUES ('RH'), ('ESG'), ('Inovação'),
+	('Tecnologia'), ('Orçamento'), ('Lançamento'),
+	('Produção'),('Produto'),('Automação'),
+	('Beleza'),('Categorias'),('Canal');
+
+CREATE TABLE IF NOT EXISTS `PalavrasChaves`
+	(
+		CodigoPalavraChave INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		CodigoTema INT NOT NULL,					
+        Descricao VARCHAR(50) NOT NULL,
+		CONSTRAINT FK_PalavrasChaves_Temas_CodigoTema FOREIGN KEY (CodigoTema) REFERENCES Temas(CodigoTema)
+	);
+
+INSERT INTO `PalavrasChaves` (`CodigoTema`,`Descricao`) 
+	VALUES (1,'rh'),
+		(1,'pessoa'), 
+		(1,'gente'), 
+		(1,'contratacao'), 
+		(1,'salario'), 
+		(1,'time'), 
+		(1,'lideranca'), 
+		(1,'inspiracao'), 
+		(1,'colaborador'), 
+		(1,'corporativa'), 
+		(2,'esg'), 
+		(2,'governanca'), 
+		(2,'sustentabilidade'), 
+		(2,'sustentavel'), 
+		(2,'social'), 
+		(2,'educacao'), 
+		(2,'compromisso'), 
+		(3,'inovacao'), 
+		(3,'estrategia'), 
+		(3,'liderar'), 
+		(3,'mercado'), 
+		(3,'crescimento'), 
+		(3,'footprint'), 
+		(3,'consolidar'), 
+		(3,'referencia'), 
+		(3,'desafio'), 
+		(3,'execucao'), 
+		(3,'varejo'), 
+		(4,'tecnologia'), 
+		(4,'digitalizacao'), 
+		(4,'digital'), 
+		(4,'digitais'), 
+		(4,'solucao'), 
+		(4,'solucoes'), 
+		(5,'orcamento'), 
+		(5,'budget'), 
+		(5,'financeiro'), 
+		(5,'gmv'), 
+		(5,'ebitda'), 
+		(5,'performance'), 
+		(6,'lancamento'), 
+		(7,'producao'), 
+		(8,'produto'), 
+		(9,'automacao'), 
+		(10,'beleza'), 
+		(10,'marca'), 
+		(10,'cosmetico'), 
+		(10,'ecossistema'), 
+		(10,'valor'), 
+		(10,'consumidor'), 
+		(10,'cliente'), 
+		(10,'jornada'), 
+		(10,'produto'), 
+		(11,'categoria'), 
+		(11,'make'), 
+		(11,'cabelo'), 
+		(11,'corpo'), 
+		(11,'perfumaria'), 
+		(11,'cuidado'), 
+		(11,'gift'), 
+		(12,'canal'), 
+		(12,'venda'), 
+		(12,'direta'), 
+		(12,'vd'), 
+		(12,'base'), 
+		(12,'revendedor'), 
+		(12,'loja'), 
+		(12,'e-comm'), 
+		(12,'b2b'), 
+		(12,'omnicalidade'), 
+		(12,'salao'), 
+		(12,'saloes'), 
+		(12,'vdf'), 
+		(12,'distribuidor'), 
+		(12,'inter'), 
+		(12,'pdvs'), 
+		(12,'evento'), 
+		(12,'operacao'), 
+		(12,'operacoes'), 
+		(12,'marketplace'), 
+		(12,'key'), 
+		(12,'account');
+
+CREATE TABLE IF NOT EXISTS `Respostas`
+	(
+		CodigoResposta INT NOT NULL AUTO_INCREMENT PRIMARY KEY,					
+        Texto VARCHAR(500) NOT NULL,
+		Retornada CHAR (1) NOT NULL DEFAULT ('N') CHECK (Retornada IN ('N','S'))
+	);
+
+CREATE TABLE IF NOT EXISTS `RespostasTemas`
+	(
+		CodigoRespostaTema INT NOT NULL AUTO_INCREMENT PRIMARY KEY,	
+		CodigoTema INT NOT NULL, 
+		CodigoResposta INT NULL,		
+		CONSTRAINT FK_RespostasTemas_Temas_CodigoTema FOREIGN KEY (CodigoTema) REFERENCES Temas(CodigoTema),		
+		CONSTRAINT FK_RespostasTemas_Respostas_CodigoResposta FOREIGN KEY (CodigoResposta) REFERENCES Respostas(CodigoResposta)	
+	);
+

@@ -1,0 +1,5 @@
+No relatório percentual temos dois cálculos sendo feitos. 
+O primeiro, denominado percentual por respostas, é feito com base no número de respostas que se enquadram naquela categoria sobre o número de respostas totais registradas. 
+Note que, como é possível que uma resposta se enquadre em mais de uma categoria, este cálculo de porcentagem somado não totaliza necessariamente 100%. 
+
+Já o segundo cálculo, denominado percentual por categoria vinculada, é feito com base no número de respostas que se enquadram naquela categoria sobre a soma das quantidades de cada categoria (relações respostas/categoria). Esse cálculo foi gerado de forma a conseguirmos apresentar um percentual que totalizasse 100% podendo ser exibido num gráfico ou utilizado para outros fins.
