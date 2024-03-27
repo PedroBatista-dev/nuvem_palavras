@@ -2,22 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, interval, timer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) { }
 
   enviarResposta(resposta: string): Observable<any> {
-    return this.http.post<any>('http://192.168.10.52:3000/resposta', { Texto: resposta });
+    return this.http.post<any>(`${this.apiUrl}resposta`, { Texto: resposta });
   }
 
   getMensagem(): Observable<any> {
     return interval(2000) // 2000 milissegundos = 2 segundos
       .pipe(
-        switchMap(() => this.http.get<any>('http://192.168.10.52:3000/respostas/novos'))
+        switchMap(() => this.http.get<any>(`${this.apiUrl}respostas/novos`))
       )
     // return timer(0, 1000).pipe(
     //   map(() => {

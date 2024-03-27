@@ -24,7 +24,8 @@ export class TelaPalavrasComponent {
           retorno.data.forEach((elemento: any) => {
             this.mensagens.unshift(elemento.Texto);
           }); // Adicionando a nova mensagem no início do array
-        }        
+        }   
+        // this.mensagens.unshift(retorno);     
       },
       error: err => Swal.fire({
         icon: 'error',
