@@ -21,22 +21,27 @@ export class TelaPerguntaComponent {
   }
 
   enviar() {
-    console.log(this.formulario.get('resposta')?.value)
-    this.dataService.enviarResposta(this.formulario.get('resposta')?.value).subscribe({
-      next:  (response) => {
-        this.formulario.get('resposta')!.reset();
-        Swal.fire({
-          icon: 'success',
-          title: 'Sucesso!',
-          text: 'Sua resposta foi enviada com sucesso!'
-        });
-      },
-      error: err => Swal.fire({
-        icon: 'error',
-        title: 'Erro!',
-        text: `Erro ao enviar a resposta: ${err}`
-      })
-    });
+    if (this.formulario.get('resposta')?.value) {
+      this.dataService.enviarResposta(this.formulario.get('resposta')?.value).subscribe({
+        next:  (response) => {
+          this.formulario.get('resposta')!.reset();
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucesso!',
+            text: 'Sua resposta foi enviada com sucesso!',
+            timer: 2000,
+            showConfirmButton: false,
+            width: 600,
+            padding: '3em',
+          });
+        },
+        error: err => Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: `Erro ao enviar a resposta: ${err}`
+        })
+      });
+    }
   }
 
 }

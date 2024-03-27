@@ -11,13 +11,13 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   enviarResposta(resposta: string): Observable<any> {
-    return this.http.post<any>('http://189.48.177.66:3000/resposta', { Texto: resposta });
+    return this.http.post<any>('http://192.168.10.52:3000/resposta', { Texto: resposta });
   }
 
   getMensagem(): Observable<any> {
     return interval(2000) // 2000 milissegundos = 2 segundos
       .pipe(
-        switchMap(() => this.http.get<any>('http://189.48.177.66:3000/respostas/novos'))
+        switchMap(() => this.http.get<any>('http://192.168.10.52:3000/respostas/novos'))
       )
     // return timer(0, 1000).pipe(
     //   map(() => {
