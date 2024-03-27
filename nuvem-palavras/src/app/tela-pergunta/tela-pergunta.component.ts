@@ -12,6 +12,8 @@ export class TelaPerguntaComponent {
 
   formulario!: FormGroup;
 
+  isFullScreen = false;
+
   constructor(private dataService: DataService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -42,6 +44,28 @@ export class TelaPerguntaComponent {
         })
       });
     }
+  }
+
+  toggleFullScreen() {
+    if (!this.isFullScreen) {
+      this.openFullScreen();
+    } else {
+      this.closeFullScreen();
+    }
+    this.isFullScreen = !this.isFullScreen;
+  }
+
+  openFullScreen() {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } 
+  }
+
+  closeFullScreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } 
   }
 
 }

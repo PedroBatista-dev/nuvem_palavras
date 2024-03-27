@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'palavras', component: TelaPalavrasComponent },
   { path: 'pergunta', component: TelaPerguntaComponent },
   { path: 'inicial', component: TelaInicialComponent },
-  { path: '', redirectTo: '/inicial', pathMatch: 'full' }
+  { path: '', redirectTo: '/palavras', pathMatch: 'full' }
 ];
 
 @NgModule({
