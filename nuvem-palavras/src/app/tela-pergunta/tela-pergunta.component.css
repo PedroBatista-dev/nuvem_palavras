@@ -1,136 +1,134 @@
 .tablet-horizontal {
-    background-color: #011e38;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .tablet-horizontal .botao-fullscreen {
-    background-color: #011e38;
-    width: 80px;
-    height: 80px;
-    margin: 10px 0 0 10px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-  }
+  background-color: #011e38;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
 
-  .tablet-horizontal .div {
-    background-color: #011e38;
-    overflow: hidden;
-    width: 2560px;
-    height: 1600px;
-    position: relative;
-  }
-  
-  .tablet-horizontal .overlap {
-    position: absolute;
-    width: 1786px;
-    height: 387px;
-    top: 278px;
-    left: 335px;
-  }
-  
-  .tablet-horizontal .text-wrapper {
-    margin-top: 0;
-    font-family: "IBM Plex Sans", Helvetica;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 150px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tablet-horizontal .rectangle {
-    position: absolute;
-    width: 1250px;
-    height: 12px;
-    top: 375px;
-    left: 0;
-    background-color: #2750e9;
-  }
-  
-  .tablet-horizontal .overlap-group {
-    position: absolute;
-    top: 757px;
-    left: 335px;
-  }
-  
-  .tablet-horizontal .text-wrapper-2 {
-    font-family: "IBM Plex Sans", Helvetica;
-    font-weight: 400;
-    font-style: italic;
-    color: #7e7070;
-    letter-spacing: 0;
-    line-height: normal;
-    background-color: #f5f1eb;
-    border-radius: 10px;
-    font-size: 40px;
-    padding: 15px;
-    width: 1750px;
-  }
-  
-  .tablet-horizontal .frame {
-    display: flex;
-    width: 326px;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 60px;
-    position: absolute;
-    top: 1211px;
-    left: 1670px;
-    background-color: #264fec;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .tablet-horizontal .text-wrapper-3 {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "IBM Plex Sans", Helvetica;
-    font-weight: 500;
-    color: #ffffff;
-    font-size: 60px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tablet-horizontal .elementos-LIDERA {
-    position: absolute;
-    width: 323px;
-    height: 331px;
-    top: 1182px;
-    left: 69px;
-    object-fit: cover;
-  }
-  
-  .tablet-horizontal .overlap-group-2 {
-    position: absolute;
-    width: 374px;
-    height: 477px;
-    top: -80px;
-    left: 2314px;
-  }
-  
-  .tablet-horizontal .ellipse {
-    position: absolute;
-    width: 374px;
-    height: 374px;
-    top: 0;
-    left: 0;
-    background-color: #264fec;
-    border-radius: 187px;
-  }
-  
-  .tablet-horizontal .branco {
-    position: absolute;
-    width: 218px;
-    height: 322px;
-    top: 155px;
-    left: 28px;
-    object-fit: cover;
-  }
+.tablet-horizontal .botao-fullscreen {
+  background-color: #011e38;
+  width: 60px;
+  height: 60px;
+  margin: 8px 0 0 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.tablet-horizontal .div {
+  background-color: #011e38;
+  overflow: hidden;
+  width: 1440px;
+  height: 713px;
+  position: relative;
+}
+
+.tablet-horizontal .overlap {
+  position: absolute;
+  width: 680px;
+  height: 228px;
+  top: 100px;
+  left: 220px;
+}
+
+.tablet-horizontal .text-wrapper {
+  margin-top: 0;
+  font-family: "IBM Plex Sans", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 55px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tablet-horizontal .rectangle {
+  position: absolute;
+  width: 430px;
+  height: 7px;
+  top: 130px;
+  left: 0;
+  background-color: #2750e9;
+}
+
+.tablet-horizontal .overlap-group {
+  position: absolute;
+  top: 269px;
+  left: 220px;
+}
+
+.tablet-horizontal .text-wrapper-2 {
+  font-family: "IBM Plex Sans", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: #7e7070;
+  letter-spacing: 0;
+  line-height: normal;
+  background-color: #f5f1eb;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 10px;
+}
+
+.tablet-horizontal .frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 50px;
+  position: absolute;
+  top: 460px;
+  left: 683px;
+  background-color: #264fec;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tablet-horizontal .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "IBM Plex Sans", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 25px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tablet-horizontal .elementos-LIDERA {
+  position: absolute;
+  width: 200px;
+  height: 206px;
+  top: 459px;
+  left: 61px;
+  object-fit: cover;
+}
+
+.tablet-horizontal .overlap-group-2 {
+  position: absolute;
+  width: 217px;
+  height: 277px;
+  top: -60px;
+  left: 925px;
+}
+
+.tablet-horizontal .ellipse {
+  position: absolute;
+  width: 217px;
+  height: 217px;
+  top: 0;
+  left: 0;
+  background-color: #264fec;
+  border-radius: 108.5px;
+}
+
+.tablet-horizontal .branco {
+  position: absolute;
+  width: 137px;
+  height: 187px;
+  top: 90px;
+  left: 16px;
+  object-fit: cover;
+}
