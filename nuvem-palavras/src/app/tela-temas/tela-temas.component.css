@@ -45,7 +45,7 @@
     font-family: "IBM Plex Sans-Bold", Helvetica;
     font-weight: 700;
     color: #ffffff;
-    font-size: 50px;
+    font-size: 100px;
     transition: all 0.5s ease;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
@@ -57,7 +57,7 @@
     font-family: "IBM Plex Sans-Bold", Helvetica;
     font-weight: 700;
     color: #ffffff;
-    font-size: 40px;
+    font-size: 160px;
     transition: all 0.5s ease;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
@@ -69,7 +69,7 @@
     font-family: "IBM Plex Sans-Bold", Helvetica;
     font-weight: 700;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 220px;
     transition: all 0.5s ease;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
@@ -81,7 +81,7 @@
     font-family: "IBM Plex Sans-Bold", Helvetica;
     font-weight: 700;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 280px;
     transition: all 0.5s ease-in-out;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;

@@ -24,9 +24,9 @@ export class TelaTemasComponent {
         if (retorno.data && retorno.data.length > 0) {
           retorno.data.forEach((elemento: any) => {
             this.temas.push({ descricao: elemento.Tema, valor: elemento.PercentualResposta });
-          }); // Adicionando a nova mensagem no início do array
+          }); 
         }   
-        // this.mensagens.unshift(retorno);     
+        console.log(this.temas)   
       },
       error: err => Swal.fire({
         icon: 'error',
@@ -37,19 +37,20 @@ export class TelaTemasComponent {
   }
 
   getTamanhoClasse(valor: number): string {
-    if (valor <= 10) 
+    console.log(valor)
+    if (valor <= 1) 
       return 'mensagem-verysmall'
    
-    if (valor <= 30) 
+    if (valor <= 3) 
       return 'mensagem-small'
 
-    if (valor <= 40)
+    if (valor <= 4)
       return 'mensagem-medium'
     
-    if (valor <= 60)
+    if (valor <= 10)
       return 'mensagem-large'
     
-    if (valor > 60)
+    if (valor > 10)
       return 'mensagem-verylarge'
 
     return 'mensagem-medium'
