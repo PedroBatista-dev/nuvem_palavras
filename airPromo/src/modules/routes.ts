@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
 import * as respostaService from './respostas/respostaService';
+import * as temaService from './tema/temaService';
 import * as respostaController from './respostas/respostaController';
 import swaggerUi from 'swagger-ui-express';
 import { RelatorioResponse, Resposta, RespostaQuantidadeResponse } from "./respostas/resposta";
 import { ConfigSwagger } from '../infra/swagger/configSwagger'; // Para utilização dos testes automatizados esta linha deve estar comentada
+import { IRelatorioPercentual } from "./tema/tema";
 
 const routes = express.Router();
 
@@ -98,6 +100,23 @@ routes.get('/respostas/relatorio-percentual', async (req: Request, res : Respons
             res.status(200).json({
                 "statusCode" : 200,
                 "data" : relatorio
+            });
+        }
+    });
+});
+
+routes.get('/temas/quantidade', async (req: Request, res : Response) => {
+    temaService.getRespostasCategorias((err : Error, items : IRelatorioPercentual) =>{
+        if(err){
+            res.status(500).json({
+                "statusCode" : 500,
+                "message": err.message 
+            });
+        }
+        else {
+            res.status(200).json({
+                "statusCode" : 200,
+                "data" : items
             });
         }
     });

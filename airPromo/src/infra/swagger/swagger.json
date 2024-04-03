@@ -116,7 +116,7 @@
                     "200": {
                         "description": "Dados recuperados com sucesso",
                         "schema": {
-                            "$ref": "#/definitions/getRespostasQuantidadesResponse"
+                            "$ref": "#/definitions/getRespostasNovasResponse"
                         }
                     },
                     "401": {
@@ -183,6 +183,39 @@
                         "description": "Relatório gerado com sucesso",
                         "schema": {
                             "$ref": "#/definitions/getRelatorioResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Erro no servidor de banco de dados",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/temas/quantidade": {
+            "get": {
+                "summary": "Percentual dos temas utilizados",
+                "tags": ["Temas"],
+                "description": "Os temas respondidos e seus percentuais",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Termas obtidos com sucesso",
+                        "schema": {
+                            "$ref": "#/definitions/getTemasQuantidadeResponse"
                         }
                     },
                     "401": {
@@ -296,6 +329,56 @@
                         },
                         "encoding": {
                             "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "getRespostasNovasResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Texto": {
+                                "type": "string"
+                            },
+                            "Retonarda": {
+                                "type": "string"
+                            },
+                            "CodigoResposta": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "getTemasQuantidadeResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Tema": {
+                                "type": "string"
+                            },
+                            "PercentualCategoria": {
+                                "type": "number"
+                            },
+                            "PercentualResposta": {
+                                "type": "number"
+                            }
                         }
                     }
                 }

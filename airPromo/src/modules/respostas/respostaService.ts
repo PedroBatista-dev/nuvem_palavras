@@ -4,6 +4,8 @@ import { OkPacket, RowDataPacket } from "mysql2";
 import ExcelJS from 'exceljs';
 import { ajustarColunasExcel } from "../../infra/rotinas/excel";
 import * as palavrasChaveService from "../tema/palavraChaveService";
+import { IRelatorioPercentual } from "../tema/tema";
+import * as temaService from "../tema/temaService";
 
 export const postResposta = (data: Resposta, callback: Function) => {
     
@@ -180,76 +182,39 @@ export const getRelatorioTematico = (callback: Function) => {
 }
 
 export const getRelatorioPercentual = (callback: Function) => {
-    const query = "SELECT * FROM (SELECT Temas.Descricao, COUNT(Respostas.Texto) AS Quantidade, (SELECT COUNT(*) FROM `Respostas`) AS QuantidadeRespostas, " +
-                        "((SELECT COUNT(*) FROM `RespostasTemas`) + (SELECT COUNT(*) FROM `Respostas` LEFT JOIN `RespostasTemas` ON Respostas.CodigoResposta = RespostasTemas.CodigoResposta WHERE RespostasTemas.CodigoTema IS NULL)) AS QuantidadeTemas  " +
-                        "FROM `Temas`  " +
-                        "LEFT JOIN `RespostasTemas` ON Temas.CodigoTema = RespostasTemas.CodigoTema  " +
-                        "LEFT JOIN `Respostas` ON RespostasTemas.CodigoResposta = Respostas.CodigoResposta " +
-                        "GROUP BY Temas.CodigoTema  " +
-                    "UNION " +
-                    "SELECT Temas.Descricao, COUNT(Respostas.Texto) AS Quantidade, (SELECT COUNT(*) FROM `Respostas`) AS QuantidadeRespostas,  " +
-                        "((SELECT COUNT(*) FROM `RespostasTemas`) + (SELECT COUNT(*) FROM `Respostas` LEFT JOIN `RespostasTemas` ON Respostas.CodigoResposta = RespostasTemas.CodigoResposta WHERE RespostasTemas.CodigoTema IS NULL)) AS QuantidadeTemas  " +
-                        "FROM `Respostas`  " +
-                        "LEFT JOIN `RespostasTemas` ON Respostas.CodigoResposta = RespostasTemas.CodigoResposta  " +
-                        "LEFT JOIN `Temas` ON RespostasTemas.CodigoTema = Temas.CodigoTema  " +
-                        "WHERE RespostasTemas.CodigoTema IS NULL " +
-                        "GROUP BY Temas.CodigoTema  " +
-                    ") AS Tabela " +
-                        "ORDER BY Descricao; "
+    temaService.getRespostasCategorias(async (err : Error, itemRelatorio : IRelatorioPercentual[]) => {
+        if (err){
+            callback(err);
+        }
+        else {
+            if (itemRelatorio.length > 0) {
+                const workbook = new ExcelJS.Workbook();
 
-    dbconnection.query(
-        query,
-        [],
-        async (err, result) => {
-            if (err) {
-                callback(err)
+                let workSheet = workbook.addWorksheet('RelatorioPercentual');
+                workSheet.addRow(['Relatório percentual de respostas por tema']).font = { size: 14 , bold : true}
+                workSheet.addRow([])
+                workSheet.addRow(['Tema', 'Percentual por Respostas (%)', 'Percentual por Categoria Vinculada (%)']).font = { bold : true }
+              
+                itemRelatorio.forEach(item => {
+                    workSheet.addRow([item.Tema, item.PercentualResposta, item.PercentualCategoria])
+                });
+
+                ajustarColunasExcel(workSheet);
+                const xlsx = await workbook.xlsx.writeBuffer() as Buffer;
+
+                callback(null, {
+                    filename: "RelatorioTemasPercentuais.xlsx",
+                    encoding: "base64",
+                    content: xlsx.toString("base64")
+                })
             }
             else {
-                const rows = <RowDataPacket[]>result;
-
-                if (rows.length > 0) {
-                    const workbook = new ExcelJS.Workbook();
-
-                    let workSheet = workbook.addWorksheet('RelatorioPercentual');
-                    workSheet.addRow(['Relatório percentual de respostas por tema']).font = { size: 14 , bold : true}
-                    workSheet.addRow([])
-                    workSheet.addRow(['Tema', 'Percentual por Respostas (%)', 'Percentual por Categoria Vinculada (%)']).font = { bold : true }
-
-                    let somaPercentualCategoria = 0;
-                    const valoresValidos = rows.filter((row) => row.Quantidade > 0);
-                    const ultimoValorValido = valoresValidos[valoresValidos.length - 1];
-                   
-                    rows.forEach(row => {
-                        const tema = row.Descricao || 'Outro'
-                        const percentualResposta = Math.round((row.Quantidade / row.QuantidadeRespostas)* 10000)/100;
-                        let percentualCategoria =  0; 
-                        if (ultimoValorValido.Descricao == row.Descricao) {
-                            percentualCategoria = Math.round((100.00 - somaPercentualCategoria)*100)/100;
-                        }
-                        else {
-                            percentualCategoria = Math.round((row.Quantidade / row.QuantidadeTemas)* 10000)/100;
-                            somaPercentualCategoria += percentualCategoria 
-                        }
-                        workSheet.addRow([tema, percentualResposta, percentualCategoria])
-                    });
-
-                    ajustarColunasExcel(workSheet);
-                    const xlsx = await workbook.xlsx.writeBuffer() as Buffer;
-
-                    callback(null, {
-                        filename: "RelatorioTemasPercentuais.xlsx",
-                        encoding: "base64",
-                        content: xlsx.toString("base64")
-                    })
-                }
-                else {
-                    callback(null, {
-                        filename: '',
-                        content: '',
-                        enconding: ''
-                    })
-                }
+                callback(null, {
+                    filename: '',
+                    content: '',
+                    enconding: ''
+                })
             }
         }
-    )
+    })
 }
