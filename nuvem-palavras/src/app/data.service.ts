@@ -38,4 +38,8 @@ export class DataService {
     //   })
     // );
   }
+  
+  getTemas(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}temas/quantidade`)
+  }
 }

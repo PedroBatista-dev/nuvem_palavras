@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -9,8 +9,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tela-pergunta.component.css']
 })
 export class TelaPerguntaComponent {
-
-  @ViewChild('textoResposta') textoResposta!: ElementRef;
 
   formulario!: FormGroup;
 
@@ -29,7 +27,6 @@ export class TelaPerguntaComponent {
       this.dataService.enviarResposta(this.formulario.get('resposta')?.value.trim()).subscribe({
         next:  (response) => {
           this.formulario.get('resposta')!.reset();
-          this.textoResposta.nativeElement.blur();
           Swal.fire({
             icon: 'success',
             title: 'Sucesso!',

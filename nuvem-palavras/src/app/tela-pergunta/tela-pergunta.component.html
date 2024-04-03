@@ -7,7 +7,7 @@
         </div>
         <div class="overlap-group">
             <form [formGroup]="formulario">
-                <textarea #textoResposta rows="6" cols="50" (keyup.enter)="enviar()" formControlName="resposta" class="text-wrapper-2" placeholder="Digite aqui sua mensagem"></textarea>
+                <textarea rows="6" cols="50" formControlName="resposta" class="text-wrapper-2" placeholder="Digite aqui sua mensagem"></textarea>
             </form>
         </div>
         <div class="frame" (click)="enviar()">

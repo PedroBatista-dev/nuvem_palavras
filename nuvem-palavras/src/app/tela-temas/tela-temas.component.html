@@ -1,0 +1,9 @@
+<div class="painel-horizontal">
+    <div class="div">
+        <div class="mensagem-container">
+            <div *ngFor="let tema of temas" [ngClass]="getTamanhoClasse(tema.valor)">
+              {{ tema.descricao }}
+            </div>
+        </div>
+    </div>
+</div>

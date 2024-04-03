@@ -10,11 +10,13 @@ import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TelaTemasComponent } from './tela-temas/tela-temas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaPalavrasComponent,
+    TelaTemasComponent,
     TelaPerguntaComponent,
     TelaInicialComponent
   ],
